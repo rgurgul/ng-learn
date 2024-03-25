@@ -1,0 +1,44 @@
+<p>adv-components works!</p>
+
+<h2>Compound Components</h2>
+<app-country-wrapper [data]="countryData">
+    <div>
+        <app-country-flag></app-country-flag>
+        <app-country-selected></app-country-selected>
+    </div>
+</app-country-wrapper>
+
+<hr>
+
+<h2>
+    Przekazywanie danych oraz templatek do komponentów.
+    <br>
+    Headless, Dump
+</h2>
+
+<app-grid1 [config]="gridConfig" [data]="gridData"></app-grid1>
+
+<app-grid2 [data]="gridData">
+    <ng-template let-item let-x="nr">
+        <tr>
+            <td>{{x}}</td>
+            <td>{{item.phone}}</td>
+            <td>{{item.title}}</td>
+            <td>
+                <button style="background-color: lightgreen; padding:5px; margin-right: 5px;">remove</button>
+                <button style="background-color: lightred; padding:5px;">more</button>
+            </td>
+        </tr>
+    </ng-template>
+</app-grid2>
+<app-grid3 [data]="gridData">
+    <tr *appPassTemplate="let x">
+        <td>{{x.phone}}</td>
+        <td>{{x.title}}</td>
+        <td>
+            <button style="background-color: coral; padding:5px; margin-right: 5px;">remove</button>
+            <button style="background-color: lightred; padding:5px;">more</button>
+        </td>
+    </tr>
+</app-grid3>
+
